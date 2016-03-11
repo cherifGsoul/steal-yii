@@ -1,0 +1,62 @@
+{
+  "name": "steal-yii",
+  "version": "1.0.0",
+  "description": "using yii and steal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cherifGsoul/steal-yii.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cherifGsoul/steal-yii/issues"
+  },
+  "homepage": "https://github.com/cherifGsoul/steal-yii#readme",
+  "devDependencies": {
+    "steal-hmr": "^0.1.1",
+    "watchalive-less": "^0.1.1"
+  },
+  "system": {
+    "transpiler": "babel",
+    "babelOptions": {
+      "blacklist": []
+    },
+    "envs": {
+      "window-development": {
+        "map": {
+          "$css": "steal-hmr/css",
+          "$less": "steal-hmr/css"
+        }
+      }
+    },
+    "npmAlgorithm": "flat",
+    "npmIgnore": [
+      "devDependencies",
+      "watchalive",
+      "watchalive-less"
+    ]
+  },
+  "watchalive": {
+    "debug": true,
+    "data": true,
+    "proxy": {
+      "regexp": "^((?!node_modules|css).)*$",
+      "target": "http://localhost/steal-yii/web"
+    },
+    "skip": [
+      "node_modules/**",
+      "**/package.json"
+    ],
+    "plugin": [
+      "less"
+    ]
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "steal": "^0.15.0"
+  }
+}
