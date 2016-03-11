@@ -20,8 +20,9 @@
     <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
     <![endif]-->
     <? if(YII_ENV === 'dev'): ?>
+    <script src="/watchalive.js"></script>
     <script src="./node_modules/steal/steal.js" main="@empty">
-        import HMR from 'steal-hmr/steal-hmr'
+        import HMR from 'node_modules/steal-hmr/hmr'
 //        import $ from 'jquery'
 
         // map styles to use steal-hmr build-in css hot-reload

@@ -18,6 +18,7 @@
   "homepage": "https://github.com/cherifGsoul/steal-yii#readme",
   "devDependencies": {
     "steal-hmr": "^0.1.1",
+    "watchalive": "^1.1.9",
     "watchalive-less": "^0.1.1"
   },
   "system": {
@@ -38,7 +39,8 @@
       "devDependencies",
       "watchalive",
       "watchalive-less"
-    ]
+    ],
+    "map": {}
   },
   "watchalive": {
     "debug": true,
