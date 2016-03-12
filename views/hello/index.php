@@ -45,7 +45,6 @@
     <script src="./node_modules/steal/steal.js" main="@empty">
         import HMR from 'steal-hmr';
         import canHot from 'can-hot';
-        import $ from 'jquery';
 
         // map styles to use steal-hmr build-in css hot-reload
         System.config({map: {
