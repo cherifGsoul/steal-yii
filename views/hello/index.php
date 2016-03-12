@@ -19,11 +19,33 @@
 <!--    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>-->
     <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
     <![endif]-->
-    <? if(YII_ENV === 'dev'): ?>
+    <script type="text/javascript">
+        steal = {
+            instantiated: {}
+        };
+    </script>
+</head>
+<body>
+
+<script type='text/stache' can-autorender id='main'>
+    <login></login>
+</script>
+
+
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">sticky footer</p>
+    </div>
+</footer>
+
+
+<?php if(YII_ENV === 'dev'): ?>
     <script src="/watchalive.js"></script>
     <script src="./node_modules/steal/steal.js" main="@empty">
-        import HMR from 'node_modules/steal-hmr/hmr'
-//        import $ from 'jquery'
+        import HMR from 'steal-hmr';
+        import canHot from 'can-hot';
+        import $ from 'jquery';
 
         // map styles to use steal-hmr build-in css hot-reload
         System.config({map: {
@@ -31,35 +53,33 @@
             $less: 'steal-hmr/css'
         }});
 
+        // tells to preserve state for reloaded component instances
+        // component state is not very good thing
+        // and side effects are possible, so it is `false` by default
+        canHot.config({preserveState: false});
+
         new HMR({
-                // auto load of main module will happen
-                main: 'app/app',
-                // outputs some debug messages
-                debug: true,
-                // explicitly state not dependants reload,
-                // actually `false` by default
-                dependants: false,
-                // tells when to reload whole page
-                page: [/index\.html/, /node_modules/],
-                // here we plugin in canHot, so it will link it with HMR events
-//                plugin: [canHot],
-                // event that gives file changes
-                handle: watchalive.onFiles,
-                // teardown happens when 'main' will be reloaded
-                // we just remove root app component
+            // load the module, provided by the package name
+            main: 'steal-yii/login',
+            // outputs some debug messages
+            debug: true,
+            // explicitly state not dependants reload,
+            // actually `false` by default
+            dependants: false,
+            // tells when to reload whole page
+            page: [/index\.html/, /node_modules/],
+            // here we plugin in canHot, so it will link it with HMR events
+            plugin: [canHot],
+            // event that gives file changes
+            handle: watchalive.onFiles,
+            // teardown happens when 'main' will be reloaded
+            // we just remove root app component
 //                teardown: () => $('bmi-app').remove()
         })
 
     </script>
-    </script>
-    <? endif; ?>
-</head>
-<body>
-<h1>Hello, world!</h1>
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<!--<script src="js/bootstrap.min.js"></script>-->
+<?php else: ?>
+    <script src="./node_modules/steal/steal.js" env="window-production" main="steal-yii/login"></script>
+<?php endif; ?>
 </body>
 </html>

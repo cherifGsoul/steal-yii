@@ -16,12 +16,25 @@
     "url": "https://github.com/cherifGsoul/steal-yii/issues"
   },
   "homepage": "https://github.com/cherifGsoul/steal-yii#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "can": "^2.3.20",
+    "done-autorender": "^0.7.3",
+    "done-component": "^0.4.0",
+    "jquery": "^2.2.1",
+    "steal": "^0.15.0"
+  },
   "devDependencies": {
+    "can-hot": "^0.1.7",
     "steal-hmr": "^0.1.1",
+    "steal-qunit": "^0.1.1",
     "watchalive": "^1.1.9",
     "watchalive-less": "^0.1.1"
   },
   "system": {
+    "directories": {
+      "lib": "js/src"
+    },
     "transpiler": "babel",
     "babelOptions": {
       "blacklist": []
@@ -32,33 +45,33 @@
           "$css": "steal-hmr/css",
           "$less": "steal-hmr/css"
         }
+      },
+      "window-production": {
+        "path": {
+          "jquery": "https://code.jquery.com/jquery-2.2.1.min.js"
+        }
       }
     },
     "npmAlgorithm": "flat",
-    "npmIgnore": [
-      "devDependencies",
-      "watchalive",
-      "watchalive-less"
-    ],
-    "map": {}
+    "npmIgnore": [],
+    "map": {},
+    "path": {},
+    "bundle": []
   },
   "watchalive": {
     "debug": true,
     "data": true,
     "proxy": {
-      "regexp": "^((?!node_modules|css).)*$",
+      "regexp": "^((?!node_modules|css|js).)*$",
       "target": "http://localhost/steal-yii/web"
     },
     "skip": [
+      "js/dist/**",
       "node_modules/**",
       "**/package.json"
     ],
     "plugin": [
       "less"
     ]
-  },
-  "dependencies": {
-    "bootstrap": "^3.3.6",
-    "steal": "^0.15.0"
   }
 }
