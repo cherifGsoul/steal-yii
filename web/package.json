@@ -35,6 +35,7 @@
     "directories": {
       "lib": "js/src"
     },
+    "main":"login",
     "transpiler": "babel",
     "babelOptions": {
       "blacklist": []
